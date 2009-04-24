@@ -10,7 +10,7 @@ namespace :themes do
         FileUtils.mkdir_p "#{RAILS_ROOT}/public/themes/#{theme_name}"
         
         FileUtils.cp_r "#{theme}/images", "#{RAILS_ROOT}/public/themes/#{theme_name}/images", :verbose => true
-        FileUtils.cp_r "#{theme}/stylesheets", "#{RAILS_ROOT}/public/themes/#{theme_name}/stylesheets", :verbose => true
+        FileUtils.cp_r "#{theme}/stylesheets/compiled", "#{RAILS_ROOT}/public/themes/#{theme_name}/stylesheets", :verbose => true
         FileUtils.cp_r "#{theme}/javascript", "#{RAILS_ROOT}/public/themes/#{theme_name}/javascript", :verbose => true
       end
     end
