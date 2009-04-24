@@ -1,6 +1,6 @@
 # The controller for serving/cacheing theme content...
 #
-class ThemeController < ActionController::Base
+class ThemedController < ActionController::Base
 
   after_filter :cache_theme_files
   
@@ -23,7 +23,7 @@ class ThemeController < ActionController::Base
   private
   
   def render_theme_item(type, file, theme, mime = mime_for(file))
-    file_path = "#{Theme.path_to_theme(theme)}/#{type}/#{file}"
+    file_path = "#{Themed.path_to_theme(theme)}/#{type}/#{file}"
     if file.split(%r{[\\/]}).include?("..") || !File.exists?(file_path) || file.blank?
       render :text => "Not Found", :status => 404
       return
@@ -35,7 +35,7 @@ class ThemeController < ActionController::Base
   def cache_theme_files
     path = request.request_uri
     begin
-      ThemeController.cache_page( response.body, path )
+      ThemedController.cache_page( response.body, path )
     rescue
       STERR.puts "Cache Exception: #{$!}"
     end

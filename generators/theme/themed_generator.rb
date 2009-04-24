@@ -1,4 +1,4 @@
-class ThemeGenerator < Rails::Generator::NamedBase
+class ThemedGenerator < Rails::Generator::NamedBase
      
    def manifest
       record do |m|
